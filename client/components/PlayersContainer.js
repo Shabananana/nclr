@@ -1,22 +1,25 @@
 import React, {Component, PropTypes} from 'react/addons';
 import Player from '../../common/components/Player';
 import PlayersList from '../../common/components/PlayersList';
-import reactor from '../reactor';
+import reactor, {ReactMixin} from '../reactor';
 import getters from '../getters';
 import actions from '../actions';
 
 function reactorMixin(target, name, descriptor) {
+  let test = ReactMixin;
+  target.state = ReactMixin.getInitialState;
+  target.componentDidMount = ReactMixin.componentDidMount;
+  target.componentWillUnmount = ReactMixin.componentWillUnmount;
   target.testDecorator = 'testing the decorator!';
+  target.prototype.testDecorator2 = 'testing decorator again!';
 }
 
-@reactorMixin
 class PlayerContainer extends Component {
   constructor(props){
     super(props);
-    this.onAddPlayerClicked = this.onAddPlayerClicked.bind(this);
   }
 
-  onAddPlayerClicked() {
+  onAddPlayerClicked = () => {
     actions.addPlayer(this.props.player);
   }
 
@@ -27,7 +30,24 @@ class PlayerContainer extends Component {
   }
 }
 
-console.log(PlayerContainer.testDecorator);
+/*@reactorMixin
+export default class extends Component {
+  getDataBindings() {
+    return {
+      players: getters.players,
+    };
+  }
+
+  render() {
+    return (
+      <PlayersList title="Player Picker)">
+        {this.state.players.map(player => {
+          return <PlayerContainer key={player.get('id')} player={player.toJS()} />;
+        }).toList()}
+      </PlayersList>
+    );
+  }
+}*/
 
 export default React.createClass({
   mixins: [reactor.ReactMixin],

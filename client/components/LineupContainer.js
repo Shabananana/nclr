@@ -9,10 +9,9 @@ import actions from '../actions';
 class PlayerContainer extends Component {
   constructor(props){
     super(props);
-    this.onRemovePlayerClicked = this.onRemovePlayerClicked.bind(this);
   }
 
-  onRemovePlayerClicked() {
+  onRemovePlayerClicked = () => {
     actions.removePlayer(this.props.player);
   }
 

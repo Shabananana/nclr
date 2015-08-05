@@ -26826,18 +26826,18 @@
 	  _inherits(PlayerContainer, _Component);
 	
 	  function PlayerContainer(props) {
+	    var _this = this;
+	
 	    _classCallCheck(this, PlayerContainer);
 	
 	    _get(Object.getPrototypeOf(PlayerContainer.prototype), 'constructor', this).call(this, props);
-	    this.onRemovePlayerClicked = this.onRemovePlayerClicked.bind(this);
+	
+	    this.onRemovePlayerClicked = function () {
+	      _actions2['default'].removePlayer(_this.props.player);
+	    };
 	  }
 	
 	  _createClass(PlayerContainer, [{
-	    key: 'onRemovePlayerClicked',
-	    value: function onRemovePlayerClicked() {
-	      _actions2['default'].removePlayer(this.props.player);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _reactAddons2['default'].createElement(_commonComponentsPlayer2['default'], { player: this.props.player, clickHandler: this.onRemovePlayerClicked });
@@ -29345,37 +29345,57 @@
 	var _actions2 = _interopRequireDefault(_actions);
 	
 	function reactorMixin(target, name, descriptor) {
+	  var test = _reactor.ReactMixin;
+	  target.state = _reactor.ReactMixin.getInitialState;
+	  target.componentDidMount = _reactor.ReactMixin.componentDidMount;
+	  target.componentWillUnmount = _reactor.ReactMixin.componentWillUnmount;
 	  target.testDecorator = 'testing the decorator!';
+	  target.prototype.testDecorator2 = 'testing decorator again!';
 	}
 	
 	var PlayerContainer = (function (_Component) {
 	  _inherits(PlayerContainer, _Component);
 	
 	  function PlayerContainer(props) {
-	    _classCallCheck(this, _PlayerContainer);
+	    var _this = this;
 	
-	    _get(Object.getPrototypeOf(_PlayerContainer.prototype), 'constructor', this).call(this, props);
-	    this.onAddPlayerClicked = this.onAddPlayerClicked.bind(this);
+	    _classCallCheck(this, PlayerContainer);
+	
+	    _get(Object.getPrototypeOf(PlayerContainer.prototype), 'constructor', this).call(this, props);
+	
+	    this.onAddPlayerClicked = function () {
+	      _actions2['default'].addPlayer(_this.props.player);
+	    };
 	  }
 	
-	  _createClass(PlayerContainer, [{
-	    key: 'onAddPlayerClicked',
-	    value: function onAddPlayerClicked() {
-	      _actions2['default'].addPlayer(this.props.player);
+	  /*@reactorMixin
+	  export default class extends Component {
+	    getDataBindings() {
+	      return {
+	        players: getters.players,
+	      };
 	    }
-	  }, {
+	  
+	    render() {
+	      return (
+	        <PlayersList title="Player Picker)">
+	          {this.state.players.map(player => {
+	            return <PlayerContainer key={player.get('id')} player={player.toJS()} />;
+	          }).toList()}
+	        </PlayersList>
+	      );
+	    }
+	  }*/
+	
+	  _createClass(PlayerContainer, [{
 	    key: 'render',
 	    value: function render() {
 	      return _reactAddons2['default'].createElement(_commonComponentsPlayer2['default'], { player: this.props.player, clickHandler: this.onAddPlayerClicked });
 	    }
 	  }]);
 	
-	  var _PlayerContainer = PlayerContainer;
-	  PlayerContainer = reactorMixin(PlayerContainer) || PlayerContainer;
 	  return PlayerContainer;
 	})(_reactAddons.Component);
-	
-	console.log(PlayerContainer.testDecorator);
 	
 	exports['default'] = _reactAddons2['default'].createClass({
 	  displayName: 'PlayersContainer',
