@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react/addons';
 import reactor from '../reactor';
 import Lineup from '../../common/components/Lineup';
 import Player from '../../common/components/Player';
@@ -6,17 +6,22 @@ import PlayersList from '../../common/components/PlayersList';
 import getters from '../getters';
 import actions from '../actions';
 
-const PlayerContainer = React.createClass({
+class PlayerContainer extends Component {
+  constructor(props){
+    super(props);
+    this.onRemovePlayerClicked = this.onRemovePlayerClicked.bind(this);
+  }
+
   onRemovePlayerClicked() {
     actions.removePlayer(this.props.player);
-  },
+  }
 
   render() {
     return (
       <Player player={this.props.player} clickHandler={this.onRemovePlayerClicked} />
     );
   }
-});
+}
 
 export default React.createClass({
   mixins: [reactor.ReactMixin],

@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react/addons';
 import Player from '../../common/components/Player';
 import PlayersList from '../../common/components/PlayersList';
 import reactor from '../reactor';
 import getters from '../getters';
 import actions from '../actions';
 
+class PlayerContainer extends Component {
+  constructor(props){
+    super(props);
+    this.onAddPlayerClicked = this.onAddPlayerClicked.bind(this);
+  }
 
-const PlayerContainer = React.createClass({
   onAddPlayerClicked() {
     actions.addPlayer(this.props.player);
-  },
+  }
 
   render() {
     return (
       <Player player={this.props.player} clickHandler={this.onAddPlayerClicked} />
     );
   }
-});
+}
 
 export default React.createClass({
   mixins: [reactor.ReactMixin],

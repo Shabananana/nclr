@@ -2,13 +2,13 @@ import React from 'react';
 import LineupContainer from './LineupContainer';
 import PlayersContainer from './PlayersContainer';
 
-export default React.createClass({
+export default class Component {
   render() {
-    return (
+    return(
       <div>
         <PlayersContainer />
         <LineupContainer />
       </div>
     );
   }
-});
+}
