@@ -27321,6 +27321,12 @@
 	    this.onRemovePlayerClicked = this.onRemovePlayerClicked.bind(this);
 	  }
 	
+	  /*function reactorMixin(target) {
+	    target.annotated = true;
+	  }
+	  
+	  @reactorMixin*/
+	
 	  _createClass(PlayerContainer, [{
 	    key: 'onRemovePlayerClicked',
 	    value: function onRemovePlayerClicked() {

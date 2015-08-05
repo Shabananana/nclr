@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react/addons';
-import reactor from '../reactor';
+import reactor, {ReactMixin} from '../reactor';
 import Lineup from '../../common/components/Lineup';
 import Player from '../../common/components/Player';
 import PlayersList from '../../common/components/PlayersList';
@@ -23,6 +23,13 @@ class PlayerContainer extends Component {
   }
 }
 
+
+
+/*function reactorMixin(target) {
+  target.annotated = true;
+}
+
+@reactorMixin*/
 export default React.createClass({
   mixins: [reactor.ReactMixin],
 
