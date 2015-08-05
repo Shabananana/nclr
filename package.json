@@ -22,5 +22,11 @@
   "version": "0.0.1",
   "description": "Decorators and es6 Classes for NuclearJS",
   "author": "Jeffrey Davis",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-util": "^3.0.6",
+    "gulp-webpack-build": "^0.12.1",
+    "path": "^0.11.14",
+    "webpack-config": "^0.7.0"
+  }
 }

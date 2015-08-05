@@ -1,10 +1,14 @@
-module.exports = {
+var path = require('path');
+var webpack = require('webpack');
+var webpackConfig = require('webpack-config');
+
+module.exports = webpackConfig.fromObject({
   entry: {
     'bundle': './client/main.js',
   },
 
   output: {
-    path: './dist',
+    path: path.resolve(__dirname, './dist/js'),
     filename: 'bundle.js',
   },
 
@@ -14,4 +18,4 @@ module.exports = {
       { test: /\.json/, loader: 'json-loader'},
     ]
   },
-};
+});
