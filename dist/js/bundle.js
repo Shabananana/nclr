@@ -26832,12 +26832,6 @@
 	    this.onRemovePlayerClicked = this.onRemovePlayerClicked.bind(this);
 	  }
 	
-	  /*function reactorMixin(target) {
-	    target.annotated = true;
-	  }
-	  
-	  @reactorMixin*/
-	
 	  _createClass(PlayerContainer, [{
 	    key: 'onRemovePlayerClicked',
 	    value: function onRemovePlayerClicked() {
@@ -29350,13 +29344,17 @@
 	
 	var _actions2 = _interopRequireDefault(_actions);
 	
+	function reactorMixin(target, name, descriptor) {
+	  target.testDecorator = 'testing the decorator!';
+	}
+	
 	var PlayerContainer = (function (_Component) {
 	  _inherits(PlayerContainer, _Component);
 	
 	  function PlayerContainer(props) {
-	    _classCallCheck(this, PlayerContainer);
+	    _classCallCheck(this, _PlayerContainer);
 	
-	    _get(Object.getPrototypeOf(PlayerContainer.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(_PlayerContainer.prototype), 'constructor', this).call(this, props);
 	    this.onAddPlayerClicked = this.onAddPlayerClicked.bind(this);
 	  }
 	
@@ -29372,8 +29370,12 @@
 	    }
 	  }]);
 	
+	  var _PlayerContainer = PlayerContainer;
+	  PlayerContainer = reactorMixin(PlayerContainer) || PlayerContainer;
 	  return PlayerContainer;
 	})(_reactAddons.Component);
+	
+	console.log(PlayerContainer.testDecorator);
 	
 	exports['default'] = _reactAddons2['default'].createClass({
 	  displayName: 'PlayersContainer',

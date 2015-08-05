@@ -24,12 +24,6 @@ class PlayerContainer extends Component {
 }
 
 
-
-/*function reactorMixin(target) {
-  target.annotated = true;
-}
-
-@reactorMixin*/
 export default React.createClass({
   mixins: [reactor.ReactMixin],
 

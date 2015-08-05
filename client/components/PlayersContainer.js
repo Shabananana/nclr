@@ -5,6 +5,11 @@ import reactor from '../reactor';
 import getters from '../getters';
 import actions from '../actions';
 
+function reactorMixin(target, name, descriptor) {
+  target.testDecorator = 'testing the decorator!';
+}
+
+@reactorMixin
 class PlayerContainer extends Component {
   constructor(props){
     super(props);
@@ -21,6 +26,8 @@ class PlayerContainer extends Component {
     );
   }
 }
+
+console.log(PlayerContainer.testDecorator);
 
 export default React.createClass({
   mixins: [reactor.ReactMixin],
