@@ -1,18 +1,7 @@
 import React from 'react';
-import App from './components/App';
-import reactor from './reactor';
-import actions from './actions';
-import PlayersStore from './stores/PlayersStore';
-import LineupStore from './stores/LineupStore';
-
-reactor.registerStores({
-  lineup: LineupStore,
-  players: PlayersStore
-});
-
-actions.fetchPlayers();
+import App from './containers/App';
 
 React.render(
-  React.createElement(App, null),
-  document.getElementById('flux-app')
+  <App />,
+  document.getElementById('root')
 );

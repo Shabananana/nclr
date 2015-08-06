@@ -1,8 +1,3 @@
-import keyMirror from 'react/lib/keyMirror';
-
-export default keyMirror({
-    RECEIVE_PLAYERS: null,
-    ADD_PLAYER: null,
-    REMOVE_PLAYER: null,
-    CLEAR_LINEUP: null
-});
+export const ADD_PLAYER = 'ADD_PLAYER';
+export const REMOVE_PLAYER = 'REMOVE_PLAYER';
+export const CLEAR_LINEUP = 'CLEAR_LINEUP';

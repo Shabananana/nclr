@@ -10,18 +10,23 @@ export default class Player extends Component {
         salary: React.PropTypes.number.isRequired,
         display: React.PropTypes.bool.isRequired,
       }).isRequired,
-      clickHandler: React.PropTypes.func.isRequired
+      addPlayer: PropTypes.func.isRequired
     };
   }
 
+  constructor(props, context) {
+    super(props, context);
+  }
+
   render() {
-    var player = this.props.player;
+    const {player, addPlayer} = this.props;
+
 
     return(
-      <div className={((this.props.player.display || this.props.player.inLineup) ? 'active' : 'hide')}>
+      <div>
         <h4>{player.name} - ${player.salary}</h4>
-        <button onClick={this.props.clickHandler}>
-          {player.inLineup ? 'Remove' : 'Add'}
+        <button onClick={() => addPlayer(player)}>
+          Add
         </button>
         <hr />
       </div>
